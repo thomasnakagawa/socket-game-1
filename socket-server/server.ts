@@ -4,20 +4,22 @@ import * as path from "path";
 import { GenerateGameID } from "./src/gameid";
 
 const app = express();
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 app.set("port", port);
 
 const http = require("http").Server(app);
 
-app.get("/", (req: any, res: any) => {
-  res.sendFile(path.resolve("./client/index.html"));
-});
+app.use(express.static("public"));
 
-const roomName = 'default-room';
+// app.get("/", (req: any, res: any) => {
+//   res.sendFile(path.resolve("./client/index.html"));
+// });
+
+const clientUrl = "http://localhost:3000";
 
 const io: socketio.Socket = require('socket.io')(http, {
   cors: {
-      origin: "http://localhost:3000",
+      origin: clientUrl,
       methods: ["GET", "POST"],
       transports: ['websocket', 'polling'],
       credentials: true
