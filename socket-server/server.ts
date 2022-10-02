@@ -10,6 +10,9 @@ app.set("port", port);
 const http = require("http").Server(app);
 
 app.use(express.static("public"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+});
 
 const clientUrl = "http://localhost:3000";
 

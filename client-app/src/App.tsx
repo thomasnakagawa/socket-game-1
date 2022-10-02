@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
 import './App.css';
 import { useSocketConnection } from './connection/SocketConnectionContext';
 
@@ -13,6 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<CompA/>}/>
+          <Route path=":gameId" element={<Game/>}/>
           <Route path="*" element={<FourOhFour/>}/>
         </Routes>
       </BrowserRouter>
@@ -23,6 +24,13 @@ function App() {
 function CompA() {
   return (
     <h1>hello</h1>
+  );
+}
+
+function Game() {
+  const { gameId } = useParams();
+  return (
+    <h1>Game: {gameId}</h1>
   );
 }
 
