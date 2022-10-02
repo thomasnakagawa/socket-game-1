@@ -11,10 +11,6 @@ const http = require("http").Server(app);
 
 app.use(express.static("public"));
 
-// app.get("/", (req: any, res: any) => {
-//   res.sendFile(path.resolve("./client/index.html"));
-// });
-
 const clientUrl = "http://localhost:3000";
 
 const io: socketio.Socket = require('socket.io')(http, {
