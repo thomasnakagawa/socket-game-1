@@ -1,5 +1,5 @@
 export function GenerateGameID(): string {
-  const length = 6;
+  const length = 4;
   var result           = '';
   var characters       = 'ABCDEFGHIJKLMNPQRSTUVWXYZ123456789'; // all letters and number, but with 0 and O removed
   var charactersLength = characters.length;
